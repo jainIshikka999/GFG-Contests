@@ -1,0 +1,34 @@
+class Solution {
+    static int maxBoxes(int N, int K, int C, int col[]) {
+        int sum=0,count=0,i1,i2,ans=0;
+        for(int i=0;i<N-1;i++){
+            sum=0;
+            if(col[i]==col[i+1] && col[i]==C){
+                sum=2;
+                i1=i-1;
+                i2=i+2;
+            
+            while(i1>=0 && i2<N && col[i1]==col[i2]){
+                count=2;
+                i1--;i2++;
+            if(i1>=0 && col[i1]==col[i1+1]){
+            count++;
+                i1--;
+            }
+            if(i2<N && col[i2]==col[i2-1]){
+            count++;
+                i2++;
+            }
+            if(count>=3){
+                sum+=count;
+            }
+            else{
+                break;
+            }
+            } 
+             ans=Math.max(ans,sum);   
+            }
+        }
+        return ans;
+    }
+}
